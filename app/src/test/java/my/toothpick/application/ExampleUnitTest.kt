@@ -1,4 +1,4 @@
-package `is`.defaul.myapplication
+package my.toothpick.application
 
 import org.junit.Test
 

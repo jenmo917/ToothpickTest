@@ -1,4 +1,4 @@
-package `is`.defaul.myapplication
+package my.toothpick.application
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
