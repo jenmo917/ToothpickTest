@@ -1,30 +1,31 @@
 package my.toothpick.application
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import toothpick.Toothpick
 import toothpick.config.Module
-import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), SomeInterface {
-
-    @Inject
-    lateinit var someInterface: SomeInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         Toothpick.openRootScope()
-                .installModules(object : Module() {
-                    init {
-                        bind(SomeInterface::class.java) to this@MainActivity
-                    }
-                })
-                .inject(this)
+            .installModules(object : Module() {
+                init {
+                    bind(SomeInterface::class.java) to this@MainActivity
+                }
+            })
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.layout_fragment, MainFragment())
+            .commit()
     }
 
-    override fun doSomething() {
-
+    override fun doSomethingInActivity() {
+        Toast.makeText(this, "Do something called", Toast.LENGTH_SHORT)
+            .show()
     }
 }

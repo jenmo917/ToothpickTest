@@ -1,5 +1,5 @@
 package my.toothpick.application
 
 interface SomeInterface {
-    fun doSomething()
+    fun doSomethingInActivity()
 }
